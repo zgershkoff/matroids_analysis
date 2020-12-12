@@ -121,9 +121,9 @@ def main():
     # data to and from strings. Python's pickle may have been a better
     # option for serialization, but I like having the option of moving
     # this data to a different framework.
-    InFile = "../data/smallBinaryMatroids/hr-sz13-rk08"
-    OutFile = "../json/hr-sz13-rk08-results3.json"
-    rank = 8
+    InFile = "../data/smallBinaryMatroids/hr-sz13-rk05"
+    OutFile = "../json/hr-sz13-rk05-results3.json"
+    rank = 5
 
     result = []
 

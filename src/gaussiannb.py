@@ -10,15 +10,9 @@ from sklearn.naive_bayes import GaussianNB
 infile = "../json/hr-sz13-rk08-results.json"
 
 def unwrap_line(line):
-    result = [] # leave off identifying string
-    for i in range(1, 13):
-        if line[i] == "True":
-            result.append(True)
-        else:
-            result.append(False)
-    for i in range(13, 15):
-        result.append(int(line[i]))
-    return result
+    # line is a tuple (representation_string, attributes)
+    attributes = line[1]
+    return attributes
 
 def graphic_check(line):
     """
@@ -37,11 +31,12 @@ def preprocess(datafile = infile):
         data.append(unwrap_line(line))
     print("number of matroids:", len(data))
 
+    num_attribs = len(data[0])
     is_graphic = [graphic_check(line) for line in data]
 
     # remove certain attributes from data
     # without this, the model will work with 100% accuracy
-    allowed_attribs = [0, 1, 2, 4] + list(range(6, 14))
+    allowed_attribs = [0, 1, 2, 4] + list(range(6, num_attribs))
     # here 3 and 5 are removed, meaning K_5 and K_3,3 duals
     data = [[line[i] for i in allowed_attribs] for line in data]
 
@@ -90,7 +85,7 @@ def simple_statistics(datafile = "../json/hr-sz13-rk08-results.json"):
     data = [unwrap_line(line) for line in data_strings]
 
     print("ratio connected:", (sum(data[9]) / len(data)))
-    print("Number of gsraphic matroids:",
+    print("Number of graphic matroids:",
         sum(1 for line in data if (line[1] \
             and not (line[0] or line[3] or line[5]))))
 
