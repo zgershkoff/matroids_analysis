@@ -1,7 +1,6 @@
 #!/usr/bin/python
 
 from sklearn.model_selection import train_test_split
-from sklearn.feature_selection import SelectPercentile, f_classif
 from sklearn.metrics import confusion_matrix
 import json
 import sys
