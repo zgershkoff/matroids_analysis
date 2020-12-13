@@ -117,10 +117,6 @@ def analyze_matroid(M):
     return attribs
 
 def main():
-    # The problem with storing this in json is that I need to convert
-    # data to and from strings. Python's pickle may have been a better
-    # option for serialization, but I like having the option of moving
-    # this data to a different framework.
     InFile = "../data/smallBinaryMatroids/hr-sz13-rk05"
     OutFile = "../json/hr-sz13-rk05-results3.json"
     rank = 5
