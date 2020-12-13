@@ -5,7 +5,7 @@ from sklearn.feature_selection import SelectPercentile, f_classif
 from sklearn.metrics import confusion_matrix
 import json
 
-from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
 
 infile = "../json/hr-sz13-rk08-results.json"
 
