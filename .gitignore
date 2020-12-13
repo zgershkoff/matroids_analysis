@@ -2,9 +2,7 @@
 data/
 
 # Junk from earlier development
-*.ipynb
-results.json
-testfile.txt
+old/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
