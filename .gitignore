@@ -1,6 +1,11 @@
 # Don't know if I should upload 2GB of data right now
 data/
 
+# Junk from earlier development
+*.ipynb
+results.json
+testfile.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
