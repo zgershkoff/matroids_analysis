@@ -4,12 +4,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import SelectPercentile, f_classif
 from sklearn.metrics import confusion_matrix
 import json
+import sys
 
 from sklearn.svm import SVC, SVR
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from collections import OrderedDict
 
+# for testing
 infile = "../json/hr-sz13-rk08-results.json"
 
 # I want to rewrite how I load the data file, so I can refer to the
@@ -63,5 +65,9 @@ def svm_regressor(matroids_train, matroids_test, labels_train, labels_test, C = 
     print(regr.score(matroids_test, labels_test))
 
 if __name__ == "__main__":
-    matroids_train, matroids_test, labels_train, labels_test = preprocess()
+    if len(sys.argv) > 1:
+        infile = sys.argv[1]
+    print(infile)
+    print("hi")
+    matroids_train, matroids_test, labels_train, labels_test = preprocess(infile)
     svm_classifier(matroids_train, matroids_test, labels_train, labels_test)

@@ -4,9 +4,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import SelectPercentile, f_classif
 from sklearn.metrics import confusion_matrix
 import json
+import sys
 
-from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
 
+# for testing
 infile = "../json/hr-sz13-rk08-results.json"
 
 def unwrap_line(line):
@@ -73,7 +75,7 @@ def predict_if_graphic(matroids_train, matroids_test, labels_train, labels_test)
      and clf.predict(matroids_test)[i]]))
     print(accuracy)
 
-def simple_statistics(datafile = "../json/hr-sz13-rk08-results.json"):
+def simple_statistics(datafile = infile):
     """
     returns simple statistics about the matroid
 
@@ -91,6 +93,8 @@ def simple_statistics(datafile = "../json/hr-sz13-rk08-results.json"):
 
 
 if __name__ == "__main__":
-    matroids_train, matroids_test, labels_train, labels_test = preprocess()
+    if len(sys.argv) > 1:
+        infile = sys.argv[1]
+    matroids_train, matroids_test, labels_train, labels_test = preprocess(infile)
     predict_if_graphic(matroids_train, matroids_test, labels_train, labels_test)
-    simple_statistics()
+    simple_statistics(infile)
